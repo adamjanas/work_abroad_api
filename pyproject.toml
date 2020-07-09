@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "work_abroad_api"
+version = "0.1.0"
+description = ""
+authors = ["adamjanas <a.janas@protonmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+django = "^3.0.8"
+black = "^19.10b0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
