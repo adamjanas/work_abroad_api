@@ -10,7 +10,7 @@ Project provides registration, offering, applying and reviewing (users, offers).
 
 
 ## Technologies
-Project is created with: \
+Project is created with:
 * [django](https://www.djangoproject.com) \
 * [django rest framework](https://www.django-rest-framework.org) \
 * [poetry](https://python-poetry.org) \
@@ -21,19 +21,17 @@ Project is created with: \
 [poetry](https://python-poetry.org) is a package-manager tool of the project.
 
 
-Create appropriate directory for the project and inside generate virtual environment
+Create appropriate directory for the project and clone repository to your local machine
 
 ```bash
-$ cd ../project_directory
-$ poetry new <project_name>
+$ cd project_directory
+$ git clone <repo_address>
 ```
 
 
-Activate virtual environment, clone repository to your local machine and install dependencies from Pipfile.lock
+Generate virtual environment and install all needed dependencies
 
 ```bash
-$ poetry shell
-$ git clone <repo_address>
 $ poetry install
 ```
 
