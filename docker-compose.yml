@@ -1,0 +1,28 @@
+version: '3.4'
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code/
+    command: python manage.py runserver 0:8000
+    depends_on:
+      - database
+    environment:
+      - ENVIRONMENT=development
+      - DJANGO_SETTINGS_MODULE=settings.local
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - DB_HOST=database
+      - DB_PORT=5432
+
+  database:
+    image: postgres:10.6-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
