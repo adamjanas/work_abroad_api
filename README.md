@@ -11,34 +11,32 @@ Project provides registration, offering, applying and reviewing (users, offers).
 
 ## Technologies
 Project is created with:
-* [django](https://www.djangoproject.com)
-* [django rest framework](https://www.django-rest-framework.org)
-* [poetry](https://python-poetry.org)
-* [postgresql as DB Engine](https://www.postgresql.org)
+* [django](https://www.djangoproject.com) \
+* [django rest framework](https://www.django-rest-framework.org) \
+* [poetry](https://python-poetry.org) \
+* [postgresql as DB Engine](https://www.postgresql.org) \
 * [docker](https://www.docker.com)
 
 ## Launch
 [poetry](https://python-poetry.org) is a package-manager tool of the project.
 
 
-1. Create appropriate directory for the project and inside generate virtual environment
+Create appropriate directory for the project and clone repository to your local machine
 
 ```bash
-$ cd ../project_directory
-$ poetry new <project_name>
+$ cd project_directory
+$ git clone <repo_address>
 ```
 
 
-2. Activate virtual environment, clone repository to your local machine and install dependencies from Pipfile.lock
+Generate virtual environment and install all needed dependencies
 
 ```bash
-$ poetry shell
-$ git clone <repo_address>
 $ poetry install
 ```
 
 
-3. If you need help or more info about poetry, run:
+If you need help or more info about poetry, run:
 
 ```bash
 $ poetry --help
