@@ -12,11 +12,7 @@ from django.db.models.signals import post_save
 class User(AbstractUser):
     birth_date = models.DateTimeField(null=True, blank=True)
     phone_number = PhoneField(null=True, blank=True, help_text='Phone Number')
-    country = CountryField(multiple=True)
-    sex = models.CharField(max_length=6, choices=SEX.choices(), null=True)
+    country = CountryField()
+    sex = models.CharField(max_length=6, choices=SEX.choices(), null=True, blank=True)
 
 
-@receiver(post_save, sender=settings.AUTH_USER_MODEL)
-def create_auth_token(sender, instance=None, created=False, **kwargs):
-    if created:
-        Token.objects.create(user=instance)

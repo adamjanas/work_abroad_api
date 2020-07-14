@@ -8,5 +8,5 @@ class ChoiceEnum(Enum):
 
 
 class SEX(ChoiceEnum):
-    M = 'MALE'
-    F = 'FEMALE'
+    MALE = 'MALE'
+    FEMALE = 'FEMALE'
