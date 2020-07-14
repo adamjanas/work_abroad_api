@@ -7,6 +7,6 @@ class ChoiceEnum(Enum):
         return [(choice.value, choice.name) for choice in cls]
 
 
-class SEX(ChoiceEnum):
-    MALE = 'MALE'
-    FEMALE = 'FEMALE'
+class Sex(ChoiceEnum):
+    MALE = 1
+    FEMALE = 2
