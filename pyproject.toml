@@ -11,6 +11,9 @@ django = "^3.0.8"
 djangorestframework = "^3.11.0"
 psycopg2-binary = "^2.8.5"
 django-filter = "^2.3.0"
+django-phone-field = "^1.8.1"
+django-countries = "^6.1.2"
+django-rest-auth = "^0.9.5"
 
 
 [tool.poetry.dev-dependencies]
