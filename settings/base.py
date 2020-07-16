@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # 3rd-party applications
     'rest_framework',
     'phone_field',
+    'django_cleanup',
     'django_countries',
     'rest_framework.authtoken'
 ]
