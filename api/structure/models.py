@@ -35,7 +35,7 @@ class UserReview(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=80)
     content = models.TextField()
-    review = models.IntegerField(help_text='Select review from 1 to 10. \'1\' is the smallest one.')
+    review = models.PositiveSmallIntegerField(help_text='Select review from 1 to 10. \'1\' is the smallest one.')
 
     def __str__(self):
         return f"{self.user} - {self.title} "
@@ -46,7 +46,7 @@ class OfferReview(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=80)
     content = models.TextField()
-    review = models.IntegerField(help_text='Select review from 1 to 10. \'1\' is the smallest one.')
+    review = models.PositiveSmallIntegerField(help_text='Select review from 1 to 10. \'1\' is the smallest one.')
 
     def __str__(self):
         return f"{self.offer} - {self.title}"
