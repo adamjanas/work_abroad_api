@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # 3rd-party applications
     'rest_framework',
     'phone_field',
+    'django_cleanup',
     'django_countries',
     'rest_framework.authtoken'
 ]
@@ -145,3 +146,6 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'users.User'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
