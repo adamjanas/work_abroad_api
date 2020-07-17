@@ -42,7 +42,7 @@ class ApplicationViewSet(ActionPermissionMixin, viewsets.ModelViewSet):
     queryset = Application.objects.all()
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(applicant=self.request.user)
 
 
 class UserReviewViewSet(ActionPermissionMixin, viewsets.ModelViewSet):
