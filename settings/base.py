@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #  Local applications
+    # Local applications
     'api.core',
     'api.users',
     'api.structure',
+    'api.chat',
 
     # 3rd-party applications
     'rest_framework',
