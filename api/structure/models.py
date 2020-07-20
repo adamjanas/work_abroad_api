@@ -2,10 +2,10 @@ from django.db import models
 from api.users.models import User
 from django_countries.fields import CountryField
 import datetime
-from api.core.constants import CreatedAt
+from api.core.models import CreatedAtAbstractModel
 
 
-class Offer(CreatedAt):
+class Offer(CreatedAtAbstractModel):
     title = models.CharField(max_length=80)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
@@ -18,7 +18,7 @@ class Offer(CreatedAt):
         return f"{self.title} - {self.author}"
 
 
-class Application(CreatedAt):
+class Application(CreatedAtAbstractModel):
     offer = models.ForeignKey('Offer', on_delete=models.CASCADE, related_name='applications')
     applicant = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=80)

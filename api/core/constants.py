@@ -1,5 +1,4 @@
 from enum import Enum
-from django.db import models
 
 
 class ChoiceEnum(Enum):
@@ -11,10 +10,3 @@ class ChoiceEnum(Enum):
 class Sex(ChoiceEnum):
     MALE = 1
     FEMALE = 2
-
-
-class CreatedAt(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        abstract = True
