@@ -45,11 +45,15 @@ INSTALLED_APPS = [
 
     # 3rd-party applications
     'rest_framework',
+    'rest_framework.authtoken',
     'phone_field',
-    'django_cleanup',
     'django_countries',
+
     'django_filters',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'django_cleanup.apps.CleanupConfig',
+
+
 ]
 
 MIDDLEWARE = [

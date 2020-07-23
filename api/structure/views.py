@@ -2,8 +2,9 @@ from rest_framework import viewsets, generics, permissions
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework import mixins
 from api.core.mixins import ActionPermissionMixin
-from api.core.permissions import IsAuthor
 from django_filters import rest_framework as filters
+from api.core.permissions import IsAuthor, IsApplicant
+
 from api.structure.models import (
     Offer,
     Application,
@@ -40,9 +41,9 @@ class OfferViewSet(ActionPermissionMixin, viewsets.ModelViewSet):
 class ApplicationViewSet(ActionPermissionMixin, viewsets.ModelViewSet):
     permission_classes_by_action = {
         "default": (IsAuthenticated,),
-        "update": (IsAuthor,),
-        "partial_update": (IsAuthor,),
-        "destroy": (IsAuthor,),
+        "update": (IsApplicant,),
+        "partial_update": (IsApplicant,),
+        "destroy": (IsApplicant,),
     }
     serializer_class = ApplicationSerializer
     queryset = Application.objects.all()
