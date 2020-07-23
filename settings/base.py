@@ -48,9 +48,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'phone_field',
     'django_countries',
-
     'django_filters',
-    'rest_framework.authtoken',
     'django_cleanup.apps.CleanupConfig',
 
 
