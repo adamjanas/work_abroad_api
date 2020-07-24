@@ -50,8 +50,6 @@ INSTALLED_APPS = [
     'django_countries',
     'django_filters',
     'django_cleanup.apps.CleanupConfig',
-
-
 ]
 
 MIDDLEWARE = [
