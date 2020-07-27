@@ -45,10 +45,11 @@ INSTALLED_APPS = [
 
     # 3rd-party applications
     'rest_framework',
+    'rest_framework.authtoken',
     'phone_field',
-    'django_cleanup',
     'django_countries',
-    'rest_framework.authtoken'
+    'django_filters',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -144,6 +145,12 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
+
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
 }
 
 AUTH_USER_MODEL = 'users.User'

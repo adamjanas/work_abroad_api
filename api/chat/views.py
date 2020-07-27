@@ -5,6 +5,7 @@ from api.core.mixins import ActionPermissionMixin
 from api.core.permissions import IsAuthor
 from api.chat.models import Message
 from api.chat.serializers import MessageSerializer
+from django_filters import rest_framework as filters
 
 
 class MessageViewSet(ActionPermissionMixin, viewsets.ModelViewSet):
@@ -14,9 +15,12 @@ class MessageViewSet(ActionPermissionMixin, viewsets.ModelViewSet):
         "partial_update": (IsAuthor,),
         "destroy": (IsAuthor,)
     }
-
     serializer_class = MessageSerializer
     queryset = Message.objects.all()
+    filter_fields = {
+        'author': ['exact'],
+        'content': ['contains']
+    }
 
     def perform_create(self, serializer):
         serializer.save(sender=self.request.user)
