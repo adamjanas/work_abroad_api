@@ -28,17 +28,12 @@ class ViewSetTest(AuthenticateMixin, APITestCase):
     def setUp(self):
 
         super().setUp()
-
         self.file = SimpleUploadedFile(name='test.txt',
                                        content=open('api/chat/tests/test_data/test.txt', 'rb').read())
-
-        self.message = Message.objects.create(recipient=self.test_user, sender=self.test_user,
+        self.message = Message.objects.create(recipient=self.test_user, author=self.test_user,
                                               content='content1', attachment=self.file)
-
         self.message_list = Message.objects.all()
-
         self.message_1 = Message.objects.get(content='content1')
-
         self.file = SimpleUploadedFile(name='test.txt',
                                        content=open('api/chat/tests/test_data/test.txt', 'rb').read())
 

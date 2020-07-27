@@ -3,7 +3,7 @@ from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework import mixins
 from api.core.mixins import ActionPermissionMixin
 from django_filters import rest_framework as filters
-from api.core.permissions import IsAuthor, IsApplicant
+from api.core.permissions import IsAuthor
 
 from api.structure.models import (
     Offer,
@@ -41,20 +41,20 @@ class OfferViewSet(ActionPermissionMixin, viewsets.ModelViewSet):
 class ApplicationViewSet(ActionPermissionMixin, viewsets.ModelViewSet):
     permission_classes_by_action = {
         "default": (IsAuthenticated,),
-        "update": (IsApplicant,),
-        "partial_update": (IsApplicant,),
-        "destroy": (IsApplicant,),
+        "update": (IsAuthor,),
+        "partial_update": (IsAuthor,),
+        "destroy": (IsAuthor,),
     }
     serializer_class = ApplicationSerializer
     queryset = Application.objects.all()
     filter_fields = {
-        'applicant': ['exact'],
+        'author': ['exact'],
         'title': ['exact', 'contains'],
         'content': ['contains']
     }
 
     def perform_create(self, serializer):
-        serializer.save(applicant=self.request.user)
+        serializer.save(author=self.request.user)
 
 
 class UserReviewViewSet(ActionPermissionMixin, viewsets.ModelViewSet):

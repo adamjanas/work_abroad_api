@@ -25,14 +25,15 @@ class OfferSerializer(serializers.ModelSerializer):
             raise ValidationError('The date cannot be today or in the past!')
         return data
 
+
 class ApplicationSerializer(serializers.ModelSerializer):
 
-    applicant = serializers.PrimaryKeyRelatedField(read_only=True)
+    author = serializers.PrimaryKeyRelatedField(read_only=True)
     offer = serializers.PrimaryKeyRelatedField(read_only=False, queryset=Offer.objects.all())
 
     class Meta:
         model = Application
-        fields = ['id', 'offer', 'applicant', 'title', 'content', 'attachment']
+        fields = ['id', 'offer', 'author', 'title', 'content', 'attachment']
 
 
 class UserReviewSerializer(serializers.ModelSerializer):

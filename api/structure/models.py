@@ -20,7 +20,7 @@ class Offer(CreatedAtAbstractModel):
 
 class Application(CreatedAtAbstractModel):
     offer = models.ForeignKey('Offer', on_delete=models.CASCADE, related_name='applications')
-    applicant = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=80)
     content = models.TextField()
     attachment = models.FileField(help_text='attach your cv')

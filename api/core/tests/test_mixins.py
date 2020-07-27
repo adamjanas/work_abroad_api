@@ -32,50 +32,31 @@ class MixinTest(APITestCase):
         }
 
         self.test_user = User.objects.create_user(**self.credentials_test_user)
-
         self.author = User.objects.create_user(**self.credentials_author)
-
         self.file = SimpleUploadedFile(name='test.txt',
                                        content=open('api/core/tests/test_data/test.txt', 'rb').read())
-
         self.offer = Offer.objects.create(title=f'title1', author=self.author, content=f'content1',
                              start_date="2021-07-23", finish_date="2021-08-23", salary=500, country="AF")
-
-        self.application = Application.objects.create(offer=Offer.objects.get(title='title1'), applicant=self.author,
+        self.application = Application.objects.create(offer=Offer.objects.get(title='title1'), author=self.author,
                                                       title="title1", content="content1", attachment=self.file)
-
         self.offer_1 = Offer.objects.get(title='title1')
-
         self.application_1 = Application.objects.get(title='title1')
-
         self.offer_list = Offer.objects.all()
-
         self.application_list = Application.objects.all()
-
         self.file = SimpleUploadedFile(name='test.txt',
                                        content=open('api/core/tests/test_data/test.txt', 'rb').read())
-
         self.user_review = UserReview.objects.create(user=self.test_user, author=self.author, title='title1',
                                                      content='content1', review=2)
-
         self.offer_review = OfferReview.objects.create(offer=self.offer_1, author=self.author, title='title1',
                                                        content='content1', review=2)
-
         self.user_review_1 = UserReview.objects.get(title='title1')
-
         self.offer_review_1 = OfferReview.objects.get(title='title1')
-
         self.user_review_list = UserReview.objects.all()
-
         self.offer_review_list = OfferReview.objects.all()
-
-        self.message = Message.objects.create(recipient=self.test_user, sender=self.author,
+        self.message = Message.objects.create(recipient=self.test_user, author=self.author,
                                               content='content1', attachment=self.file)
-
         self.message_list = Message.objects.all()
-
         self.message_1 = Message.objects.get(content='content1')
-
         self.file = SimpleUploadedFile(name='test.txt',
                                        content=open('api/structure/tests/test_data/test.txt', 'rb').read())
 

@@ -34,43 +34,28 @@ class ViewSetTest(AuthenticateMixin, APITestCase):
     def setUp(self):
 
         super().setUp()
-
         self.objects_number = 5
-
         self.file = SimpleUploadedFile(name='test.txt',
                                        content=open('api/structure/tests/test_data/test.txt', 'rb').read())
-
         for i in range(1, self.objects_number + 1):
             Offer.objects.create(title=f'title{i}', author=self.test_user,
                                  content=f'content{i}', start_date="2021-07-23",
                                  finish_date="2021-08-23", salary=500, country="AF")
-
-        self.application = Application.objects.create(offer=Offer.objects.get(title='title1'), applicant=self.test_user,
+        self.application = Application.objects.create(offer=Offer.objects.get(title='title1'), author=self.test_user,
                                                       title="title1", content="content1", attachment=self.file)
-
         self.offer_1 = Offer.objects.get(title='title1')
-
         self.application_1 = Application.objects.get(title='title1')
-
         self.offer_list = Offer.objects.all()
-
         self.application_list = Application.objects.all()
-
         self.file = SimpleUploadedFile(name='test.txt',
                                        content=open('api/structure/tests/test_data/test.txt', 'rb').read())
-
         self.user_review = UserReview.objects.create(user=self.test_user, author=self.test_user, title='title1',
                                                      content='content1', review=2)
-
         self.offer_review = OfferReview.objects.create(offer=self.offer_1, author=self.test_user, title='title1',
                                                        content='content1', review=2)
-
         self.user_review_1 = UserReview.objects.get(title='title1')
-
         self.offer_review_1 = OfferReview.objects.get(title='title1')
-
         self.user_review_list = UserReview.objects.all()
-
         self.offer_review_list = OfferReview.objects.all()
 
     def test_offer_list(self):
@@ -184,7 +169,7 @@ class ViewSetTest(AuthenticateMixin, APITestCase):
 
         data = {
             'offer': self.offer_1.pk,
-            'applicant': self.test_user.pk,
+            'author': self.test_user.pk,
             'title': 'testtitle',
             'content': 'testcontent',
             'attachment': self.file
@@ -225,7 +210,7 @@ class ViewSetTest(AuthenticateMixin, APITestCase):
         self.assertIn(data['title'], response.content.decode())
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_application_application_delete(self):
+    def test_application_delete(self):
 
         url = reverse('applications-detail', args=(self.application_1.pk,))
 

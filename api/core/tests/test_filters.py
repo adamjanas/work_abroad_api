@@ -11,24 +11,19 @@ class FiltersTestCase(AuthenticateMixin, APITestCase):
     def setUp(self):
 
         super().setUp()
-
         self.objects_number = 10
-
         self.file = SimpleUploadedFile(name='test.txt',
                                        content=open('api/structure/tests/test_data/test.txt', 'rb').read())
-
         for i in range(1, self.objects_number + 1):
             Offer.objects.create(title=f'title{i}', author=self.test_user,
                                  content=f'content{i}', start_date="2021-07-23",
                                  finish_date="2021-08-23", salary=500, country="AF")
-            Message.objects.create(recipient=self.test_user, sender=self.test_user,
+            Message.objects.create(recipient=self.test_user, author=self.test_user,
                                    content='title{i}', attachment=self.file)
-
         self.file = SimpleUploadedFile(name='test.txt',
                                        content=open('api/structure/tests/test_data/test.txt', 'rb').read())
-
         for i in range(1, self.objects_number + 1):
-            Application.objects.create(offer=Offer.objects.get(title='title1'), applicant=self.test_user,
+            Application.objects.create(offer=Offer.objects.get(title='title1'), author=self.test_user,
                                        title=f"title{i}", content=f"content{i}", attachment=self.file)
 
     def test_offer_list_filter_by_author_exact(self):

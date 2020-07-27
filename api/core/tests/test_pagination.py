@@ -17,28 +17,23 @@ class FiltersTestCase(AuthenticateMixin, APITestCase):
     def setUp(self):
 
         super().setUp()
-
         self.objects_number = 25
-
         self.file = SimpleUploadedFile(name='test.txt',
                                        content=open('api/structure/tests/test_data/test.txt', 'rb').read())
-
         for i in range(1, self.objects_number + 1):
             Offer.objects.create(title=f'title{i}', author=self.test_user,
                                  content=f'content{i}', start_date="2021-07-23",
                                  finish_date="2021-08-23", salary=500, country="AF")
-
         self.file = SimpleUploadedFile(name='test.txt',
                                        content=open('api/structure/tests/test_data/test.txt', 'rb').read())
-
         for i in range(1, self.objects_number + 1):
-            Application.objects.create(offer=Offer.objects.get(title='title1'), applicant=self.test_user,
+            Application.objects.create(offer=Offer.objects.get(title='title1'), author=self.test_user,
                                        title=f'title{i}', content=f'content{i}', attachment=self.file)
             OfferReview.objects.create(offer=Offer.objects.get(title='title1'), author=self.test_user,
                                        title=f'title{i}', review=2)
             UserReview.objects.create(user=self.test_user, author=self.test_user,
                                        title=f'title{i}', review=2)
-            Message.objects.create(recipient=self.test_user, sender=self.test_user,
+            Message.objects.create(recipient=self.test_user, author=self.test_user,
                                    content='title{i}', attachment=self.file)
 
     def test_offer_list_is_paginated(self):
