@@ -7,7 +7,7 @@ tests: &tests
       - docker
   script:
     - docker build work_abroad_api .
-    - docker run work_abroad_api /bin/sh -c "set -e; python manage.py test --settings=settings.local"
+    - docker run work_abroad_api /bin/sh -c "set -e; python manage.py test --settings=settings.pipelines"
   services:
     - docker
     - postgres
