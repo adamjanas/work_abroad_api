@@ -1,0 +1,20 @@
+image: python:3.8-alpine3.11
+options:
+  docker: True
+tests: &tests
+  name: tests
+  caches:
+      - docker
+  script:
+    - docker build work_abroad_api .
+    - docker run work_abroad_api /bin/sh -c "set -e; python manage.py test --settings=settings.pipelines"
+  services:
+    - docker
+    - postgres
+pipelines:
+  default:
+    - step: *tests
+definitions:
+  services:
+      postgres:
+        image: postgres:10.6-alpine
