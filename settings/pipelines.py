@@ -10,7 +10,7 @@ DATABASES = {
         "USER": "postgres",
         "PASSWORD": "password",
         "HOST": "172.17.0.1",
-        "PORT": "password",
+        "PORT": 5432,
     }
 }
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"

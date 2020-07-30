@@ -6,8 +6,8 @@ tests: &tests
   caches:
       - docker
   script:
-    - docker build work_abroad_api .
-    - docker run work_abroad_api /bin/sh -c "set -e; python manage.py test --settings=settings.pipelines"
+    - docker build -t work_abroad_api_api .
+    - docker run work_abroad_api_api /bin/sh -c "set -e; /code/manage.py test --settings=settings.pipelines"
   services:
     - docker
     - postgres
