@@ -11,10 +11,10 @@ Project provides registration, offering, applying and reviewing (users, offers).
 
 ## Technologies
 Project is created with:
-* [django](https://www.djangoproject.com) \
-* [django rest framework](https://www.django-rest-framework.org) \
-* [poetry](https://python-poetry.org) \
-* [postgresql as DB Engine](https://www.postgresql.org) \
+* [django](https://www.djangoproject.com)
+* [django rest framework](https://www.django-rest-framework.org)
+* [poetry](https://python-poetry.org)
+* [postgresql as DB Engine](https://www.postgresql.org)
 * [docker](https://www.docker.com)
 
 ## Launch
